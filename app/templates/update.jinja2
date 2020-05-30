@@ -1,0 +1,14 @@
+{% extends 'index.jinja2' %} {% block content %}
+
+<div class="col-sm-12">
+
+    <form class="formulario_signup" action="/updateDashboard" method="post">
+      <p class="notification"> ATENÇÃO: Essa operação destina-se a atualizar os dados dos gráficos da dashboard considerando novas requisições desde a última atualização. </br> </br> A atualização poderá demorar, de acordo com o volume de requisições do banco. </br> </br> Após o término do procedimento você será notificado sobre o sucesso da operação e poderá retornar ao dashboard.</p>
+        <span id="update_span">
+          <button id="signup_btn" class="btn_laze" type="submit">Atualizar</button></br>
+        </span>
+    </form>
+
+</div>
+
+  {% endblock %}

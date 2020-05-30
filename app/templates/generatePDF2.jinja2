@@ -1,0 +1,103 @@
+<!-- http://www.jyotiranjan.in/livedemo/js/livedemo.php?fn=create-dynamic-drop-down-list.html
+https://stackoverflow.com/questions/12158737/display-hide-textbox-based-on-drop-down-list -->
+
+{% extends 'index.jinja2' %} {% block content %}
+
+<div class=notification>
+  <fieldset style="margin-bottom: 20px;">
+    <legend class="lazeStyleFont">Selecione o tipo de relatório:&nbsp</legend>
+    <select  id="reportType" name="option" class="windowLaze2" onchange="javascript:showTextBox(this.options[this.selectedIndex].value);">
+      <option value="" selected="selected">Selecione</option>
+      <option value="domain">Domínio</option>
+      <option value="user">Usuário</option>
+      <option value="comunication">Comunicações</option>
+      <option value="denied">Requisições negadas</option>
+    </select>
+  </fieldset>
+
+  <fieldset id="parameters" style="display:none;margin-bottom: 20px;">
+    <legend class="lazeStyleFont">Selecione o(s) parâmetro(s) de pesquisa:&nbsp</legend>
+    <div  id="domainsEntry"  style="display:none; font-size: 14px">
+       Domínio: <input type="text" class="windowLaze2" id="domain" name="domainEntry" style="padding-left: 5px;"/>
+    </div>
+    <div id="userEntry"  style="display:none; font-size: 14px">
+       Usuário: <input type="text" class="windowLaze2" id="user" name="userEntry" style="padding-left: 5px;"/>
+    </div>
+  </fieldset>
+
+  <fieldset style="margin-bottom: 5px;">
+    <legend class="lazeStyleFont">Selecione o período da pesquisa:&nbsp</legend>
+    <label for="initial_date">Data de início: </label>
+    <input type="date" class="windowLaze2" id="initial_date" name="initialDate" value="";></br>
+    <label for="final_date">Data fim: </label>
+    <input type="date" class="windowLaze2" id="final_date" name="finalDate" value="";>
+  </fieldset>
+</br>
+    <button class="btn_laze" id="signup_btn" onclick="getValues()">Gerar PDF</button>
+</div>
+
+
+
+
+  <script>
+
+    var date1 = document.getElementById("initial_date");
+    var date2 = document.getElementById("final_date");
+    date1.value = new Date().toISOString().substring(0, 10);
+    date2.value = new Date().toISOString().substring(0, 10);
+
+    function showTextBox(listindex){
+      switch (listindex){
+        case "domain":
+          document.getElementById("parameters").style.display='block';
+          document.getElementById("domainsEntry").style.display='block';
+          document.getElementById("userEntry").style.display='none';
+          break;
+
+        case "user":
+          document.getElementById("parameters").style.display='block';
+          document.getElementById("userEntry").style.display='block';
+          document.getElementById("domainsEntry").style.display='none';
+          break;
+
+        case "comunication":
+          document.getElementById("parameters").style.display='block';
+          document.getElementById("domainsEntry").style.display='block';
+          document.getElementById("userEntry").style.display='block';
+          break;
+
+        case "denied":
+          document.getElementById("parameters").style.display='none';
+          document.getElementById("domainsEntry").style.display='none';
+          document.getElementById("userEntry").style.display='none';
+          break;
+      }
+    }
+
+    function getValues(){
+      var option = document.getElementById("reportType").value;
+      // var user = "";
+      // var domain = "";
+      var params = "";
+
+
+      if (option == "user"){
+        params += "option=user&user="+document.getElementById("user").value+"&initial_date="+document.getElementById("initial_date").value+"&final_date="+document.getElementById("final_date").value;
+      }
+      else if (option == "comunication"){
+        params += "option=comunication&user="+document.getElementById("user").value+"&domain="+document.getElementById("domain").value+"&initial_date="+document.getElementById("initial_date").value+"&final_date="+document.getElementById("final_date").value;
+      }
+      else if (option == "domain"){
+        params += "option=domain&domain="+document.getElementById("domain").value+"&initial_date="+document.getElementById("initial_date").value+"&final_date="+document.getElementById("final_date").value;
+      }
+      else{
+        params += "option=denied&initial_date="+document.getElementById("initial_date").value+"&final_date="+document.getElementById("final_date").value;
+      }
+
+      page = "/pdfReport?"+params;
+      window.open(page, '_blank');
+    }
+
+  </script>
+
+{% endblock %}

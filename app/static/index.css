@@ -1,0 +1,399 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Raleway:300|Tillana:600');
+
+#bootstrap-data-table{
+  font-size: 12px;
+}
+
+#tabela{
+  font-size: 12px;
+}
+
+body{
+  background-color: rgba(0,0,0,.05);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#tabela{
+  padding: 0;
+}
+
+#lazeBorder{
+  padding: 30px 0;
+}
+
+#pageTitle{
+  margin: 5px 10px 5px 10px;
+  padding: 15px;
+}
+
+#loggedUser{
+  display: block;
+  font-family: 'Open Sans';
+  font-size: 0.35rem;
+  text-align: right;
+  white-space: nowrap;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  padding: 0.7rem 0.75rem;
+}
+
+#filter{
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.fallbackLabel{
+  margin-bottom: 8px !important;
+  padding-right: 8px;
+}
+
+.card-title {
+    margin-bottom: 0;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-lg, .btn-group-lg > .btn {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.3rem;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #272c33;
+  border-color: #6E7271;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #3A3F45;
+  border-color: #272c33;
+}
+
+.btn-primary:focus, .btn-primary.focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #0062cc;
+  border-color: #005cbf;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.btn_laze{
+  display: block;
+  font-family: 'Open Sans';
+  font-size: 0.75rem;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.975rem 0.75rem;
+  color: #fff;
+  background-color: #272c33;
+}
+
+.btn_laze:hover {
+  color: #fff;
+  background-color: #EE6C4D;
+  border-color: #EE6C4D;
+}
+
+#strip {
+  border-left: 1rem solid #272c33 !important;
+}
+
+#padding_card{
+  padding: 2rem !important;
+  border-left: 1rem;
+}
+
+#center_style{
+  text-align: center;
+}
+
+.strip_notification {
+  width: 100%;
+  max-width: 150rem;
+  margin: 1.75rem auto auto;
+}
+
+#signup_span{
+  display:flex;
+  justify-content: flex-end;
+  margin-right: 0.65rem;
+}
+
+#update_span{
+  display:flex;
+  margin: 2rem 0.65rem;
+}
+
+#signup_btn{
+  padding: 0.975rem 1.75rem;
+}
+
+button:disabled{
+  padding: 0.975rem 1.75rem;
+  background-color: gray;
+}
+
+#upload_input{
+  /* padding: 0.975rem 1.75rem; */
+  margin: 0 0.65rem;
+}
+
+#upload_btn{
+  padding: 0.975rem 2rem;
+  margin: 2rem;
+  font-family: 'Open Sans';
+  font-size: 0.75rem;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  color: #fff;
+  background-color: #272c33;
+}
+
+.custom-file-input ~ .custom-file-label::after {
+  content: "Pesquisar";
+  font-size: 0.75rem;
+  display:flex;
+  align-items: center; 
+  color: #fff;
+    background-color: #272c33;
+    border-color: #272c33;
+}
+
+
+#filter {
+  padding: 0px;
+}
+
+#windowLaze{
+  line-height: 1.8;
+  border-width: thin;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 0px;
+  text-align: center;
+  font-size: 0.90rem;
+  width: 10.7rem;
+}
+
+#windowRequest{
+  line-height: 1.8;
+  border-width: thin;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 0px;
+  -webkit-appearance: none;
+  font-size: 0.90rem;
+  width: 10.7rem;
+  padding-left: 15px;
+  text-align: justify;
+}
+
+.windowLaze2{
+  line-height: 1.2;
+  border-width: thin;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 5px;
+  font-size: 0.90rem;
+  width: 10.7rem;
+}
+
+
+#searchbutton{
+  font-family: 'Open Sans';
+  font-size: 0.75rem;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.25rem 0.90rem;
+  color: #fff;
+  background-color: #272c33;
+  margin-bottom: 3px;
+  line-height: 1.6;
+  margin-left: -5px;
+}
+
+#searchbutton:hover {
+  color: #fff;
+  background-color: #EE6C4D;
+  border-color: #EE6C4D;
+}
+
+.right-panel header.header{
+  padding: 0px;
+}
+
+.col-sm-1{
+  padding-right: 0;
+  padding-left: 0;
+  float: left;
+}
+
+.col-sm-12{
+  padding-right: 0;
+  padding-left: 0;
+}
+.mt-3{
+  margin-top: 0.5rem!important;
+  padding: 0 10px;
+}
+
+.card h4{
+  font-size: 0.75rem  ;
+}
+
+legend{
+  width: auto;
+}
+/* style para signup */
+
+.lazeStyleFont{
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"!important;
+  font-weight: 400;
+  line-height: 24px;
+  color: #878787;
+}
+
+.notification{
+  padding: 0 10px;
+  margin: 10px 0 20px;
+  text-align: justify;
+
+}
+
+.formulario_signup {
+  width: 100%;
+  max-width: 150rem;
+  padding: 12px;
+  margin: auto auto auto;
+}
+
+.form-row>.col, .form-row>[class*=col-] {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.formulario_signup .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 0;
+}
+
+.formulario_signup .form-control:focus {
+  z-index: 2;
+}
+
+label{
+  margin-bottom: 0.25rem;
+  font-size: 14px;
+}
+
+.formulario_signup input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.formulario_signup input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+
+}
+.container .col-sm-7{
+  padding: 0px 0px 15px 0px;
+}
+
+.container .col-sm-5{
+  padding: 0px 0px 15px 0px;
+}
+
+.container .col-sm-12{
+  padding: 20px 0px;
+  border: 0px;
+}
+
+#image{
+  padding: 0px;
+}
+
+.form-group {
+  border: 0;
+  margin-bottom: 15px;
+}
+
+
+.container .row{
+  max-width: 720px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.duplicateUsername{
+  color: red;
+  display: block;
+  text-align: center;
+}
+
+[class*='erro'] {
+  display: none;
+  color: red;
+  font-size: 10px;
+}

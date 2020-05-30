@@ -1,0 +1,102 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Raleway:300|Tillana:600');
+
+
+
+body {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: rgba(0,0,0,.05);
+}
+
+.background-dark{
+  background-color: #343a40!important;
+  margin-top: 30px;
+}
+
+
+.login-form{
+  background: #ffffff;
+  padding: 30px 50px  10px;
+}
+
+.formulario_login {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: 0px auto;
+}
+
+.formulario_login .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.formulario_login .form-control:focus {
+  z-index: 2;
+}
+
+.formulario_login img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: -10px;
+}
+
+.formulario_login .tit2 {
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  font-size: 17px;
+  margin-top: -10px;
+  margin-bottom: -10px;
+  color: #ee6c4d;
+}
+
+.strong{
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px;
+  font-weight: 1000;
+  color: #C35940;
+}
+
+.error{
+  color: red;
+  display: block;
+  text-align: center;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #272c33;
+  border-color: #6E7271;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #4D5866;
+  border-color: #272c33;
+}
+
+.btn-primary:active {
+  color: #fff;
+  background-color: #4D5866;
+  border-color: #272c33;
+}

@@ -1,0 +1,44 @@
+{% extends 'index.jinja2' %} {% block content %}
+
+<div class="col-sm-12">
+
+  <div>
+    {% if alerta_r == 0 %}
+    <div class="alert  alert-danger alert-dismissible fade show" role="alert">
+      <span class="badge badge-pill badge-danger">Erro!</span> {{retorno_r}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span></button>
+    </div>
+
+    {% else %}
+    <div class="alert  alert-success alert-dismissible fade show" role="alert">
+      <span class="badge badge-pill badge-success">Sucesso!</span> {{retorno_r}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span></button> {% endif %}
+    </div>
+
+  </div>
+
+  <div>
+      {% if alerta_t == 0 %}
+      <div class="alert  alert-danger alert-dismissible fade show" role="alert">
+        <span class="badge badge-pill badge-danger">Erro!</span> {{retorno_t}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span></button>
+      </div>
+
+      {% else %}
+      <div class="alert  alert-success alert-dismissible fade show" role="alert">
+        <span class="badge badge-pill badge-success">Sucesso!</span> {{retorno_t}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span></button> {% endif %}
+      </div>
+
+    </div>
+    
+    <div>
+      <p class="notification"> Retorne ao dashboard para analisar os dados atualizados.</p>
+    </div>
+  </div>
+
+  {% endblock %}

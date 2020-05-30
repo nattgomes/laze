@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset=UTF-8>
+  <title>laze - Log AnaliZEr</title>
+  <meta name="author" content="Natália Gomes Knob" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="static/images/laze_new_peq.png" type="image/gif" sizes="16x16">
+  <link rel="stylesheet" href="static/bootstrap.css" />
+  <link rel="stylesheet" href="static/login.css" />
+</head>
+
+<body class="background-dark">
+  <div class="login-form">
+    <form class="formulario_login" action="/login" method="post" enctype="multipart/form-data">
+      <img src="static/images/laze_new_baixo.png" width="200" />
+      <br><br>
+      <h2 class="tit2">A powerful Squid <label class="strong">L</label>og <label class="strong">A</label>naly<label class="strong">ZE</label>r</h2></br>
+
+      <label for="usuario" class="sr-only">Username</label>
+      <input type="text" name="username" class="form-control" placeholder="Usuário" />
+      <label for="password" class="sr-only">Password</label>
+      <input type="password" name="password" class="form-control" placeholder="Senha" />
+      <label class="error">{{login_error}} </label> </br>
+      <button id="entrar" class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button></br>
+
+    </form>
+  </div>
+</body>
+
+</html>

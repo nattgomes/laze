@@ -1,0 +1,53 @@
+{% extends 'index.jinja2' %} {% block content %}
+
+<div class="col-sm-12">
+  <form class="formulario_signup" action="/updatingUser" method="post" enctype="multipart/form-data" onsubmit="return validate_form();" >
+    <div class="container">
+      <p class="notification"> ATENÇÃO: Este formulário destina-se apenas à atualização dos dados cadastrais. Para alteração de senha, acesse o menu "Alterar senha".
+      </p>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="name">Nome</label>
+          <input type="text" id="name"  name="name" class="form-control" value="{{ name }}">
+          <span class="errorName">Este campo é obrigatório!</span>
+        </div>
+        <div class="form-group col-md-6" >
+          <label for="name">Sobrenome</label>
+          <input type="text" id="lastname" name="lastname" class="form-control" value="{{ lastname }}">
+          <span class="errorLastName">Este campo é obrigatório!</span>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="name">CPF</label>
+          <input type="text" id="cpf" name="cpf" class="form-control" value="{{ cpf }}">
+          <span class="errorCPF">Este campo é obrigatório!</span>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="name">Telefone</label>
+          <input type="text" id="phone"  name="phone" class="form-control" value="{{ phone }}">
+          <span class="errorPhone">Este campo é obrigatório!</span>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="formGroupInput" class="name_input">Usuário</label>
+          <input type="text" id="username"  name="username" class="form-control"  value="{{ usr_name }}" readonly/>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="formGroupInput">Email</label>
+          <input type="text" id="email"  name="email" class="form-control" value="{{ email }}"/>
+          <span class="errorEmail">Este campo é obrigatório!</span>
+        </div>
+      </div>
+      
+      <span id="signup_span">
+        <button class="btn_laze" type="submit" >Atualizar dados</button></br>
+      </span>
+
+    </div>
+  </form>
+</div>
+
+{% endblock %}

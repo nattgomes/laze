@@ -1,0 +1,42 @@
+{% extends 'index.jinja2' %} {% block content %}
+
+
+<div class="col-sm-6" id="padding_card">
+  <div class="card">
+    <div class="card-body" id="strip">
+      <p> </br>Para fazer upload de novo log, selecione seu arquivo:</p>
+      <form class="strip_notification" action="/parse" method="post" enctype="multipart/form-data">
+        <div class="input-group">
+          <div class="custom-file">
+            <input type="file" name="upload" class="custom-file-input" id="customFileLang" lang="pt-Br">
+            <label class="custom-file-label text-truncate" for="customFileLang">Selecione o arquivo</label>
+          </div>
+        </div>
+        <div id="center_style">
+          <input id="upload_btn" type="submit" value="Enviar">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="col-sm-12">
+
+    <form class="formulario_signup" action="/parse" method="post" enctype="multipart/form-data">
+      <p class="notification"> Deseja fazer upload de novo log?</br></br>Selecione seu arquivo: </p>
+      <input id="upload_input" type="file" name="upload" />
+
+      <input class="btn_laze" id="upload_btn" type="submit" value="Enviar" />
+    </form>
+
+</div>
+ -->
+<script language="JavaScript" type="text/javascript">
+  $('.custom-file-input').on('change', function () {
+    let fileName = $(this).val().split('\\').pop();
+    $(this).next('.custom-file-label').addClass("selected").html(fileName);
+  });
+</script>
+
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends 'index.jinja2' %} {% block content %}
+
+<div class="content mt-3">
+  <form id="filter" method="POST" action="/comunications">
+    <div class="nativeDatePicker">
+      <label for="month-visit">Filtro: </label>
+      <input type="month" id="windowLaze" name="monthVisit" value=""  ;>
+      <button id="searchbutton" onclick="this.form.submit()">pesquisar</button>
+    </div>
+  </form>
+</div>
+
+<div class="col-sm-12">
+
+  <div class="content mt-3" id="tabela">
+    <div class="animated fadeIn">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <strong class="card-title">{{title}}</strong>
+            </div>
+            <div class="card-body">
+              <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                <thead>
+                  <th> {{ fields[0] }} </th>
+                  <th> {{ fields[1] }} </th>
+                  <th> {{ fields[2] }} </th>
+                  <th> {{ fields[3] }} </th>
+                  <th> {{ fields[4] }} </th>
+                  <th> {{ fields[5] }} </th>
+                </thead>
+
+                <tbody>
+                  {% for value in values %}
+                  <tr>
+                    <td>{{loop.index}}</td>
+                    <td><a href="{{ '/query_domain/%s'%value[0] }}"> {{ value[0] }}</a></td>
+                    <td><a href="{{ '/query_clients/%s'%value[1] }}"> {{ value[1] }}</a></td>
+                    <td>{{ value[2] }}</td>
+                    <td>{{ value[3] }}</td>
+                    <td><a href="{{ '/query_domain_user/%s&%s'|format(value[0], value[1])}}"> {{ value[4] }}</a></td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(document).ready(function() {
+
+      $("#bootstrap-data-table").dataTable({
+        language: {
+          url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json",
+        }
+      })
+
+    });
+
+    var date = new Date();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+
+    {% if valuesToQuery %}
+      var monthControl = document.querySelector('input[type="month"]');
+      // é necessário colocar a variável entre áspas pois senão javascript não recebe como string. Isso porque o jinja simplesmente printa a variável
+      monthControl.value = "{{ valuesToQuery }}";
+    {% else %}
+      var monthControl = document.querySelector('input[type="month"]');
+      monthControl.value = year + "-" + ("0" + month).slice(-2);
+    {% endif %}
+
+  </script>
+
+  {% endblock %}

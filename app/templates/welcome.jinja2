@@ -1,0 +1,428 @@
+{% extends 'index.jinja2' %} {% block content %}
+
+<!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/month -->
+<div class="content mt-3">
+  <form id="filter" method="POST" action="/welcome">
+    <div class="nativeDatePicker">
+      <label for="month-visit">Filtro: </label>
+      <input type="month" id="windowLaze" name="monthVisit" value=""  ;>
+      <button id="searchbutton" onclick="this.form.submit()">pesquisar</button>
+    </div>
+
+  </form>
+</div>
+
+<div class="col-sm-12">
+  <div class="content mt-3" id="graficos">
+    <div class="animated fadeIn">
+
+    <div class="row">
+
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="mb-3">Top 10 domínios mais acessados </h4>
+            <canvas id="topDomainschartWelcome"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- /# column -->
+
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="mb-3">Top usuários por consumo em MB</h4>
+            <canvas id="topUserschartWelcome"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- /# column -->
+
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="mb-3">Top conteúdo das requisições </h4>
+            <canvas id="topTypeChartWelcome"></canvas>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- /# row -->
+
+      <div class="row">
+
+        <div class="col-lg-4">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="mb-3">Consumo MB / requisições por mês em {{year}} </h4>
+              <canvas id="mbByMonthchart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- /# column -->
+
+        <div class="col-lg-8">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="mb-3">Consumo de MB e número de requisições por dia em {{month}}/{{year}} </h4>
+              <canvas id="mbByDaychart"></canvas>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- /# row -->
+
+        <div class="row">
+
+          <div class="col-lg-4">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="mb-3">Resultado de Requisições </h4>
+                <canvas id="requestResultchartWelcome"></canvas>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      <!-- /# row -->
+    </div>
+
+  </div>
+</div>
+
+<script               src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js">
+</script>
+
+
+
+<script>
+
+
+// Gráfico doughnut Dominios:
+
+var ctx = document.getElementById('topDomainschartWelcome');
+ctx.height = 236;
+var doughutChart = new Chart(ctx, {
+  type: 'doughnut',
+
+  data: {
+    datasets: [{
+      data: [
+        {% for element in domaindatadoughnut %}
+        {{ element[1] }},
+        {% endfor %}
+      ],
+      backgroundColor: [
+        {% for element in colors %}
+        "{{element}}",
+        {% endfor %}
+      ],
+      hoverBackgroundColor: [
+        {% for element in colors3 %}
+        "{{element}}",
+        {% endfor %}
+      ]
+    }],
+
+    labels: [
+    {% for element in domaindatadoughnut %}
+    "{{ element[0] }}",
+    {% endfor %}
+    ]
+  },
+
+  options: {
+    legend: {
+      display: false
+    }
+  }
+});
+
+
+// Gráfico doughnut Usuários:
+
+var ctx = document.getElementById('topUserschartWelcome');
+ctx.height = 236;
+var doughutChart = new Chart(ctx, {
+  type: 'doughnut',
+
+  data: {
+    datasets: [{
+      data: [
+        {% for element in userDoughnutChart %}
+        {{ element[1] }},
+        {% endfor %}
+      ],
+      backgroundColor: [
+        {% for element in colors %}
+        "{{element}}",
+        {% endfor %}
+      ],
+      hoverBackgroundColor: [
+        {% for element in colors3 %}
+        "{{element}}",
+        {% endfor %}
+      ]
+    }],
+
+    labels: [
+    {% for element in userDoughnutChart %}
+    "{{ element[0] }}",
+    {% endfor %}
+    ]
+  },
+
+  options: {
+    legend: {
+      display: false
+    }
+  }
+});
+
+// Gráfico torta Top tipos
+
+var ctx = document.getElementById('topTypeChartWelcome');
+ctx.height = 236;
+var doughutChart = new Chart(ctx, {
+  type: 'pie',
+
+  data: {
+    datasets: [{
+      data: [
+        {% for element in datapie %}
+        {{ element[1] }},
+        {% endfor %}
+      ],
+      backgroundColor: [
+        {% for element in colors %}
+        "{{element}}",
+        {% endfor %}
+      ],
+      hoverBackgroundColor: [
+        {% for element in colors3 %}
+        "{{element}}",
+        {% endfor %}
+      ]
+    }],
+
+    labels: [
+    {% for element in datapie %}
+    "{{ element[0] }}",
+    {% endfor %}
+    ]
+  },
+
+  options: {
+    legend: {
+      display: false
+    }
+  }
+});
+
+
+// Gráfico linhas e colunas por mês
+
+      var ctx = document.getElementById('mbByMonthchart');
+      ctx.height = 236;
+      var lineChart = new Chart(ctx, {
+        type: 'bar',
+        data:{
+          labels: [ {% for element in monthChart %}
+          {{ element[0] }},
+          {% endfor %}],
+          datasets: [
+          {
+            label: 'MB',
+            borderColor: "rgba(39, 44, 51,0.4)",
+            borderWidth: "1",
+            backgroundColor: "rgba(0,0,0,.08)",
+            data: [
+            {% for element in monthChart %}
+            {{element[1]}},
+            {% endfor %}
+            ],
+            yAxisID: 'y-axis-1'
+          },
+          {
+          label: 'Número de requisições',
+          borderColor: "rgba(39, 44, 51,1)",
+          borderWidth: "1",
+          backgroundColor: "rgba(39, 44, 51,0.7)",
+          pointHighlightStroke: "rgba(26,179,148,1)",
+          data: [
+            {% for element in monthChart %}
+            {{element[2]}},
+            {% endfor %}
+            ],
+            yAxisID: 'y-axis-2',
+          type: 'line'
+        }
+        ]
+      },
+        options: {
+            responsive: true,
+            tooltips: {
+                mode: 'index',
+                intersect: false
+            },
+            hover: {
+                mode: 'nearest',
+                intersect: true
+            },
+            scales: {
+            yAxes: [{
+              type: 'linear',
+              display: true,
+              position: 'left',
+              id: 'y-axis-1',
+            }, {
+              type: 'linear',
+              display: true,
+              position: 'right',
+              id: 'y-axis-2',
+
+              // grid line settings
+              gridLines: {
+                drawOnChartArea: false, // only want the grid lines for one axis to show up
+              },
+            }],
+          }
+        }
+    } );
+
+
+    // Gráfico linhas e colunas por dia
+
+          var ctx = document.getElementById('mbByDaychart');
+          ctx.height = 106;
+          var lineChart = new Chart(ctx, {
+            type: 'bar',
+            data:{
+              labels: [
+                {% for element in dailyChart %}
+                {{ element[0] }},
+                {% endfor %}],
+              datasets: [
+              {
+                label: 'Consumo em MB',
+                borderColor: "rgba(39, 44, 51,0.4)",
+                borderWidth: "1",
+                backgroundColor: "rgba(0,0,0,.08)",
+                data: [
+                  {% for element in dailyChart %}
+                  {{element[1]}},
+                  {% endfor %}
+                  ],
+                  yAxisID: 'y-axis-1'
+              },
+              {
+                label: 'Número de requisições',
+                borderColor: "rgba(39, 44, 51,1)",
+                borderWidth: "1",
+                backgroundColor: "rgba(39, 44, 51,0.7)",
+                pointHighlightStroke: "rgba(26,179,148,1)",
+                data: [
+                  {% for element in dailyChart %}
+                  {{element[2]}},
+                  {% endfor %}
+                  ],
+                  yAxisID: 'y-axis-2',
+                type: 'line'
+              }
+              ]
+            },
+            options: {
+                responsive: true,
+                tooltips: {
+                    mode: 'index',
+                    intersect: false
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+    						yAxes: [{
+    							type: 'linear',
+    							display: true,
+    							position: 'left',
+    							id: 'y-axis-1',
+    						}, {
+    							type: 'linear',
+    							display: true,
+    							position: 'right',
+    							id: 'y-axis-2',
+
+    							// grid line settings
+    							gridLines: {
+    								drawOnChartArea: false, // only want the grid lines for one axis to show up
+    							},
+    						}]
+    					}
+            }
+        } );
+
+
+
+        // Gráfico torta Resultado requests
+
+        var ctx = document.getElementById('requestResultchartWelcome');
+        ctx.height = 236;
+        var doughutChart = new Chart(ctx, {
+          type: 'pie',
+
+          data: {
+            datasets: [{
+              data: [
+                {% for element in resultRequestChart %}
+                {{ element[1] }},
+                {% endfor %}
+              ],
+              backgroundColor: [
+                {% for element in colors %}
+                "{{element}}",
+                {% endfor %}
+              ],
+              hoverBackgroundColor: [
+              ]
+            }],
+
+            labels: [
+            {% for element in resultRequestChart %}
+            "{{ element[0] }}",
+            {% endfor %}
+            ]
+          },
+
+          options: {
+            legend: {
+              display: false
+            }
+          }
+        });
+
+
+            var date = new Date();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+
+            {% if valuesToQuery %}
+              var monthControl = document.querySelector('input[type="month"]');
+              // é necessário colocar a variável entre áspas pois senão javascript não recebe como string. Isso porque o jinja simplesmente printa a variável
+              monthControl.value = "{{ valuesToQuery }}";
+            {% else %}
+              var monthControl = document.querySelector('input[type="month"]');
+              monthControl.value = year + "-" + ("0" + month).slice(-2);
+            {% endif %}
+
+    </script>
+
+    {% endblock %}
