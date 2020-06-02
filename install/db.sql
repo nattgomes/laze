@@ -20,7 +20,8 @@ SET row_security = off;
 --
 
 CREATE DATABASE laze WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'en_US.UTF-8' LC_CTYPE = 'en_US.UTF-8';
-
+CREATE USER laze WITH ENCRYPTED PASSWORD 'laze';
+GRANT ALL PRIVILEGES ON DATABASE laze TO laze;
 
 ALTER DATABASE laze OWNER TO laze;
 
@@ -871,7 +872,7 @@ COPY public.files (id, uploaded_time, file_name, uploaded_file) FROM stdin;
 --
 
 COPY public.users (id, username, name, lastname, cpf, email, phone, password) FROM stdin;
-1	natt	Natalia	Knob	01330694007	nattgomesadv@gmail.com	54999596950	pbkdf2:sha256:50000$zBq5wX3a$99b902e33a14eb5df228f1abd1d8211b6727bcf5312dd8da02d4256c8f0248aa
+1	admin	Administrador	do Sistema	01234567890	admin@admin.com	555555555	pbkdf2:sha256:50000$WM4g3ccH$dcc08993e4085891f71b499e9118d56d059d00047324e39793d7b95232896ffa
 \.
 
 
