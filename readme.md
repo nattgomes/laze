@@ -40,3 +40,5 @@ Existe trigger que, "for each statement" resultante de insert ou update na tabel
 As views da dashboard também podem ser atualizadas através do menu "atualizar dashboard".
 
 Obs.: Este tutorial foi testado no ubuntu 20.04
+
+Mais informações sobre a ferramenta pode ser obtidas no artigo: https://sol.sbc.org.br/index.php/errc/article/view/9213
