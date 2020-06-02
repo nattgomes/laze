@@ -2,7 +2,7 @@ Clonar repositório do GitLab :
 	git clone https://github.com/nattgomes/laze
 
 Instalar dependêndencias:
-	sudo apt install python3-pip python3-venv postgresql wkhtmltopdf
+	sudo apt install python3-pip python3-venv postgresql wkhtmltopdf libpq-dev
 
 Entrar na pasta do laze:
 	cd laze
